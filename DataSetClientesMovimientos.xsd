@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetClientesMovimientos" targetNamespace="http://tempuri.org/DataSetClientesMovimientos.xsd" xmlns:mstns="http://tempuri.org/DataSetClientesMovimientos.xsd" xmlns="http://tempuri.org/DataSetClientesMovimientos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=DESKTOP-L9CRCP4\SQLEXPRESS;Initial Catalog=banco;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-l9crcp4\sqlexpress.banco.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="clientesMovTableAdapter" GeneratorDataComponentClassName="clientesMovTableAdapter" Name="clientesMov" UserDataComponentName="clientesMovTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="desktop-l9crcp4\sqlexpress.banco.dbo" DbObjectName="banco.dbo.clientes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        cl.dni, cl.nombre + ' ' + cl.apellido AS Expr1, MIN(cu.ultimoMovimiento) AS Expr2, MAX(cu.ultimoMovimiento) AS Expr3
+FROM            clientes AS cl INNER JOIN
+                         cuentas AS cu ON cl.dni = cu.dni
+GROUP BY cl.dni, cl.nombre, cl.apellido</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="dni" DataSetColumn="dni" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+              <Mapping SourceColumn="Expr3" DataSetColumn="Expr3" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetClientesMovimientos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DataSetClientesMovimientos" msprop:Generator_DataSetName="DataSetClientesMovimientos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="clientesMov" msprop:Generator_RowEvHandlerName="clientesMovRowChangeEventHandler" msprop:Generator_RowDeletedName="clientesMovRowDeleted" msprop:Generator_RowDeletingName="clientesMovRowDeleting" msprop:Generator_RowEvArgName="clientesMovRowChangeEvent" msprop:Generator_TablePropName="clientesMov" msprop:Generator_RowChangedName="clientesMovRowChanged" msprop:Generator_RowChangingName="clientesMovRowChanging" msprop:Generator_TableClassName="clientesMovDataTable" msprop:Generator_RowClassName="clientesMovRow" msprop:Generator_TableVarName="tableclientesMov" msprop:Generator_UserTableName="clientesMov">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dni" msprop:Generator_ColumnPropNameInRow="dni" msprop:Generator_ColumnPropNameInTable="dniColumn" msprop:Generator_ColumnVarNameInTable="columndni" msprop:Generator_UserColumnName="dni" type="xs:int" />
+              <xs:element name="Expr1" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_UserColumnName="Expr1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="101" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr2" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_UserColumnName="Expr2" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Expr3" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Expr3" msprop:Generator_ColumnPropNameInTable="Expr3Column" msprop:Generator_ColumnVarNameInTable="columnExpr3" msprop:Generator_UserColumnName="Expr3" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:clientesMov" />
+      <xs:field xpath="mstns:dni" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
